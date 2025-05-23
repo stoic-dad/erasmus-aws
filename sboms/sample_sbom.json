@@ -1,0 +1,19 @@
+{
+  "components": [
+    {
+      "name": "example-lib",
+      "version": "1.2.3",
+      "purl": "pkg:pypi/example-lib",
+      "properties": [
+        {
+          "name": "author_email",
+          "value": "someone@iran.ir"
+        },
+        {
+          "name": "origin",
+          "value": "Iran"
+        }
+      ]
+    }
+  ]
+}
