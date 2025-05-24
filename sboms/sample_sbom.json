@@ -1,17 +1,92 @@
 {
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-05-23T10:30:00.000Z",
+    "tools": [
+      {
+        "vendor": "OWASP",
+        "name": "CycloneDX Python Lib",
+        "version": "3.11.0"
+      }
+    ]
+  },
   "components": [
     {
+      "type": "library",
+      "bom-ref": "example-lib@1.2.3",
       "name": "example-lib",
       "version": "1.2.3",
-      "purl": "pkg:pypi/example-lib",
+      "purl": "pkg:pypi/example-lib@1.2.3",
+      "scope": "required",
       "properties": [
         {
           "name": "author_email",
-          "value": "someone@iran.ir"
+          "value": "developer@iran.ir"
+        },
+        {
+          "name": "maintainer_email", 
+          "value": "maintainer@tehran.com"
         },
         {
           "name": "origin",
           "value": "Iran"
+        },
+        {
+          "name": "description",
+          "value": "Example library for testing OFAC compliance"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "safe-package@2.1.0",
+      "name": "safe-package",
+      "version": "2.1.0", 
+      "purl": "pkg:pypi/safe-package@2.1.0",
+      "scope": "required",
+      "properties": [
+        {
+          "name": "author_email",
+          "value": "dev@example.com"
+        },
+        {
+          "name": "description",
+          "value": "A safe package from allowed jurisdiction"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "suspicious-npm@1.0.0",
+      "name": "suspicious-npm",
+      "version": "1.0.0",
+      "purl": "pkg:npm/suspicious-npm@1.0.0",
+      "scope": "required",
+      "properties": [
+        {
+          "name": "author.email",
+          "value": "coder@sanctioned.ru"
+        },
+        {
+          "name": "publisher.email",
+          "value": "publisher@moscow.ru"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "maven-component@3.4.5",
+      "name": "maven-component", 
+      "version": "3.4.5",
+      "purl": "pkg:maven/com.example/maven-component@3.4.5",
+      "scope": "required",
+      "properties": [
+        {
+          "name": "description",
+          "value": "Maven component - currently not analyzed"
         }
       ]
     }

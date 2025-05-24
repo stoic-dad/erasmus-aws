@@ -1,0 +1,14 @@
+boto3>=1.34.0
+botocore>=1.34.0
+urllib3>=1.26.0
+requests>=2.31.0
+
+# CVE and Security Analysis
+nvdlib>=0.7.0
+safety>=2.0.0
+packaging>=21.0
+python-dateutil>=2.8.0
+
+# Testing dependencies
+pytest>=7.0.0
+moto>=4.2.0

@@ -1,1 +1,70 @@
-# Enriched analysis output placeholder
+{
+  "analysis_timestamp": "2025-05-23T10:35:00.123456",
+  "components_analyzed": 4,
+  "pypi_components": 2,
+  "npm_components": 1,
+  "maven_components": 1,
+  "other_components": 0,
+  "analysis_metadata": {
+    "version": "v2.0.0",
+    "sbom_format": "CycloneDX",
+    "sbom_version": "1.4"
+  },
+  "ofac_risks": [
+    {
+      "name": "example-lib",
+      "version": "1.2.3",
+      "purl": "pkg:pypi/example-lib@1.2.3",
+      "component_type": "pypi",
+      "risk_factors": {
+        "origin_country": "Iran",
+        "origin_confidence": 0.9,
+        "author_email_domain": "iran.ir",
+        "author_email_country": "Iran",
+        "author_email_confidence": 0.8,
+        "maintainer_email_domain": "tehran.com",
+        "maintainer_email_country": "Iran",
+        "maintainer_email_confidence": 0.6
+      },
+      "risk_score": 0.9,
+      "analyzed_at": "2025-05-23T10:35:00.234567"
+    },
+    {
+      "name": "suspicious-npm",
+      "version": "1.0.0",
+      "purl": "pkg:npm/suspicious-npm@1.0.0",
+      "component_type": "npm",
+      "risk_factors": {
+        "author_email_domain": "sanctioned.ru",
+        "author_email_country": "Russia",
+        "author_email_confidence": 0.8,
+        "publisher_email_domain": "moscow.ru",
+        "publisher_email_country": "Russia",
+        "publisher_email_confidence": 0.6
+      },
+      "risk_score": 0.8,
+      "analyzed_at": "2025-05-23T10:35:00.345678"
+    }
+  ],
+  "summary": {
+    "total_components": 4,
+    "pypi_components": 2,
+    "npm_components": 1,
+    "maven_components": 1,
+    "other_components": 0,
+    "ofac_risk_components": 2,
+    "high_risk_components": 2,
+    "medium_risk_components": 0,
+    "low_risk_components": 0,
+    "risk_level": "HIGH"
+  },
+  "metadata": {
+    "source_file": "sboms/sample_sbom.json",
+    "source_bucket": "erasmus-sbom-analyzer-dev-bucket",
+    "file_size_bytes": 2048,
+    "analysis_time_utc": "2025-05-23T10:35:00.123456",
+    "processing_time_seconds": 0.45,
+    "lambda_version": "v2.0.0",
+    "lambda_request_id": "12345678-1234-1234-1234-123456789012"
+  }
+}

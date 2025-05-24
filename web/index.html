@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erasmus SBOM Risk Analyzer v2.0</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .risk-critical { @apply bg-red-900 border-red-700 text-red-100; }
+        .risk-high { @apply bg-red-100 border-red-300 text-red-800; }
+        .risk-medium { @apply bg-yellow-100 border-yellow-300 text-yellow-800; }
+        .risk-low { @apply bg-green-100 border-green-300 text-green-800; }
+        .risk-clean { @apply bg-blue-100 border-blue-300 text-blue-800; }
+        .executive-summary { @apply bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500; }
+        .bluf-critical { @apply bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-500; }
+        .bluf-high { @apply bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500; }
+        .bluf-medium { @apply bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-500; }
+        .bluf-low { @apply bg-gradient-to-r from-green-50 to-green-100 border-l-4 border-green-500; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-900">Erasmus SBOM Risk Analyzer</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">AI-Powered OFAC Compliance</span>
+                    <div class="h-6 w-6 bg-green-400 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check text-white text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Upload Section -->
+        <div class="bg-white rounded-lg shadow-sm border p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-upload text-blue-600 mr-2"></i>
+                Upload SBOM for Analysis
+            </h2>
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                <input type="file" id="sbomFile" accept=".json" class="hidden">
+                <div id="dropZone" class="cursor-pointer">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                    <p class="text-lg text-gray-600">Drop your CycloneDX SBOM file here or click to browse</p>
+                    <p class="text-sm text-gray-500 mt-2">Supports JSON format only</p>
+                </div>
+            </div>
+            <button id="analyzeBtn" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <i class="fas fa-search mr-2"></i>
+                Analyze SBOM
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden">
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-cubes text-blue-600 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Total Components</p>
+                            <p id="totalComponents" class="text-2xl font-semibold text-gray-900">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Risk Components</p>
+                            <p id="riskComponents" class="text-2xl font-semibold text-gray-900">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-chart-line text-yellow-600 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Risk Level</p>
+                            <p id="riskLevel" class="text-2xl font-semibold text-gray-900">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-clock text-green-600 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Processing Time</p>
+                            <p id="processingTime" class="text-2xl font-semibold text-gray-900">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Components Table -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">
+                        <i class="fas fa-list text-blue-600 mr-2"></i>
+                        Risk Assessment Details
+                    </h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Component</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Score</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Factors</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                            </tr>
+                        </thead>
+                        <tbody id="riskTableBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="hidden text-center py-12">
+            <i class="fas fa-spinner fa-spin text-4xl text-blue-600 mb-4"></i>
+            <p class="text-lg text-gray-600">Analyzing SBOM for OFAC compliance risks...</p>
+            <p class="text-sm text-gray-500 mt-2">This may take a few moments</p>
+        </div>
+    </main>
+
+    <script>
+        // Configuration - Update this with your API Gateway URL
+        const API_BASE_URL = 'YOUR_API_GATEWAY_URL';
+
+        // DOM elements
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('sbomFile');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const loadingState = document.getElementById('loadingState');
+        const resultsSection = document.getElementById('resultsSection');
+
+        let selectedFile = null;
+
+        // File upload handling
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-blue-500', 'bg-blue-50');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFileSelect(files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
+        });
+
+        function handleFileSelect(file) {
+            if (!file.name.endsWith('.json')) {
+                alert('Please select a JSON file');
+                return;
+            }
+            selectedFile = file;
+            dropZone.innerHTML = `
+                <i class="fas fa-file-alt text-4xl text-green-600 mb-4"></i>
+                <p class="text-lg text-gray-600">${file.name}</p>
+                <p class="text-sm text-gray-500 mt-2">${(file.size / 1024).toFixed(1)} KB</p>
+            `;
+            analyzeBtn.disabled = false;
+        }
+
+        // Analysis function
+        analyzeBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            loadingState.classList.remove('hidden');
+            resultsSection.classList.add('hidden');
+            analyzeBtn.disabled = true;
+
+            try {
+                const sbomContent = await selectedFile.text();
+                const sbomData = JSON.parse(sbomContent);
+
+                // Simulate API call - replace with actual API integration
+                const response = await simulateAnalysis(sbomData);
+                displayResults(response);
+            } catch (error) {
+                console.error('Analysis error:', error);
+                alert('Error analyzing SBOM: ' + error.message);
+            } finally {
+                loadingState.classList.add('hidden');
+                analyzeBtn.disabled = false;
+            }
+        });
+
+        // Simulate analysis for demo purposes
+        async function simulateAnalysis(sbomData) {
+            await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate processing
+            
+            // Return mock response based on sample data
+            return {
+                summary: {
+                    total_components: sbomData.components?.length || 0,
+                    ofac_risk_components: 2,
+                    high_risk_components: 1,
+                    medium_risk_components: 1,
+                    low_risk_components: 0,
+                    risk_level: "HIGH"
+                },
+                ofac_risks: [
+                    {
+                        name: "example-lib",
+                        version: "1.2.3",
+                        component_type: "pypi",
+                        risk_score: 0.9,
+                        risk_factors: {
+                            origin_country: "Iran",
+                            author_email_country: "Iran"
+                        }
+                    }
+                ],
+                metadata: {
+                    processing_time_seconds: 0.45
+                }
+            };
+        }
+
+        function displayResults(data) {
+            // Update summary cards
+            document.getElementById('totalComponents').textContent = data.summary.total_components;
+            document.getElementById('riskComponents').textContent = data.summary.ofac_risk_components;
+            document.getElementById('riskLevel').textContent = data.summary.risk_level;
+            document.getElementById('processingTime').textContent = data.metadata.processing_time_seconds + 's';
+
+            // Update risk level styling
+            const riskLevelElement = document.getElementById('riskLevel');
+            riskLevelElement.className = `text-2xl font-semibold text-gray-900 px-2 py-1 rounded risk-${data.summary.risk_level.toLowerCase()}`;
+
+            // Populate risk table
+            const tableBody = document.getElementById('riskTableBody');
+            tableBody.innerHTML = '';
+
+            if (data.ofac_risks && data.ofac_risks.length > 0) {
+                data.ofac_risks.forEach(risk => {
+                    const row = document.createElement('tr');
+                    const riskFactors = Object.keys(risk.risk_factors).join(', ');
+                    const countries = Object.values(risk.risk_factors)
+                        .filter(v => typeof v === 'string' && v !== risk.risk_factors.origin_confidence)
+                        .join(', ');
+
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">${risk.name}</div>
+                            <div class="text-sm text-gray-500">v${risk.version}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
+                                ${risk.component_type}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">${(risk.risk_score * 100).toFixed(0)}%</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-red-600 h-2 rounded-full" style="width: ${risk.risk_score * 100}%"></div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${riskFactors}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${countries}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } else {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                            <i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
+                            <div>No OFAC compliance risks detected</div>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            resultsSection.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
