@@ -1,0 +1,14 @@
+This is a placeholder for the exported data flow diagram file.
+
+Please follow these steps to create the actual diagram export:
+
+1. Open draw.io desktop application
+2. Load the file: `/Users/rohitsurya/erasmus-aws-1/architecture/erasmus-dataflow-diagram.drawio`
+3. Export as PNG with:
+   - Transparent background
+   - Scale: 2.0 or 300 DPI
+   - Save as this filename
+
+For detailed instructions, see:
+- `/Users/rohitsurya/erasmus-aws-1/architecture/EXPORT_INSTRUCTIONS.md`
+- `/Users/rohitsurya/erasmus-aws-1/export_diagrams.sh`

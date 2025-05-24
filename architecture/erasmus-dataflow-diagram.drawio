@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-20T10:00:00.000Z" agent="Erasmus SBOM Analyzer" etag="def456" version="22.1.16">
+  <diagram name="Erasmus-Data-Flow" id="erasmus-dataflow">
+    <mxGraphModel dx="1422" dy="734" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Title -->
+        <mxCell id="title" value="🔄 Erasmus SBOM Risk Analyzer&#xa;Data Flow &amp; Processing Pipeline" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Step 1: SBOM Upload -->
+        <mxCell id="step1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1-title" value="Step 1: SBOM Upload" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="180" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1-icon" value="📄" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="80" y="155" width="40" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="step1-desc" value="• CycloneDX JSON&#xa;• Web Dashboard&#xa;• API Upload" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="130" y="155" width="100" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="api-gw" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="320" y="140" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="api-gw-label" value="API Gateway" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="210" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 2: Lambda Processing -->
+        <mxCell id="step2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="120" width="300" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2-title" value="Step 2: Lambda Analysis Engine" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="lambda-icon" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="470" y="155" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="step2-desc" value="• Parse SBOM Components&#xa;• CVE Analysis (NVD API)&#xa;• OFAC Compliance Check&#xa;• Dependency Depth Analysis" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="155" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 3: External API Calls -->
+        <mxCell id="step3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#1B5E20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="step3-title" value="Step 3: External API Integration" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="nvd-icon" value="🔍" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="80" y="315" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="nvd-desc" value="NVD API v2&#xa;CVE Database" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="315" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety-icon" value="🛡️" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="220" y="315" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety-desc" value="Safety DB&#xa;Python Security" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="315" width="80" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 4: Data Storage -->
+        <mxCell id="step4-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#4A148C;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="280" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="step4-title" value="Step 4: Data Storage &amp; Caching" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="290" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3-icon" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="480" y="315" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3-desc" value="S3 Bucket&#xa;Results Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="315" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ddb-icon" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4D72F3;gradientDirection=north;fillColor=#3334B9;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
+          <mxGeometry x="620" y="315" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ddb-desc" value="DynamoDB&#xa;Audit Logs" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="315" width="80" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 5: Analysis Results -->
+        <mxCell id="step5-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="440" width="700" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="step5-title" value="Step 5: Analysis Results &amp; Executive Reporting" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="450" width="680" height="20" as="geometry"/>
+        </mxCell>
+        
+        <!-- Analysis Components -->
+        <mxCell id="cve-results" value="🔥 CVE Analysis&#xa;Critical: 2&#xa;High: 5&#xa;Medium: 8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="ofac-results" value="🌍 OFAC Check&#xa;Flagged: 1&#xa;Clean: 47&#xa;Risk: Medium" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="190" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="dep-results" value="🏗️ Dependencies&#xa;Max Depth: 8&#xa;Direct: 12&#xa;Transitive: 156" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="exec-results" value="📊 Executive BLUF&#xa;Risk: HIGH&#xa;Action: Review&#xa;Timeline: 24h" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;" vertex="1" parent="1">
+          <mxGeometry x="410" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="risk-results" value="⚡ Risk Score&#xa;CVSS: 8.9&#xa;Supply Chain: 7.2&#xa;Overall: HIGH" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#AD1457;" vertex="1" parent="1">
+          <mxGeometry x="520" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="json-results" value="📄 JSON Report&#xa;Complete Results&#xa;API Response&#xa;Dashboard Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="480" width="90" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 6: Monitoring -->
+        <mxCell id="step6-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#424242;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="620" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="step6-title" value="Step 6: Monitoring &amp; Alerting" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="630" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="cw-icon" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
+          <mxGeometry x="80" y="655" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="cw-desc" value="CloudWatch&#xa;Metrics &amp; Logs" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="655" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="sns-icon" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="220" y="655" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="sns-desc" value="SNS Alerts&#xa;Email/SMS/Slack" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="655" width="80" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 7: Dashboard -->
+        <mxCell id="step7-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="620" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="step7-title" value="Step 7: Web Dashboard &amp; Visualization" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="630" width="280" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="dash-icon" value="📊" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="480" y="655" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="dash-desc" value="• Interactive Charts (Chart.js)&#xa;• Executive Summary Tab&#xa;• CVE Analysis Tab&#xa;• Dependency Analysis Tab" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="655" width="200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Flow Arrows -->
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1976D2;" edge="1" parent="1" source="step1-box" target="api-gw">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="170" as="sourcePoint"/>
+            <mxPoint x="310" y="170" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#E65100;" edge="1" parent="1" source="api-gw" target="step2-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="170" as="sourcePoint"/>
+            <mxPoint x="440" y="170" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1B5E20;" edge="1" parent="1" source="step2-box" target="step3-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="220" as="sourcePoint"/>
+            <mxPoint x="300" y="280" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="400" y="240"/>
+              <mxPoint x="200" y="240"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#4A148C;" edge="1" parent="1" source="step2-box" target="step4-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="220" as="sourcePoint"/>
+            <mxPoint x="600" y="280" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow5" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#F57F17;" edge="1" parent="1" source="step2-box" target="step5-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="220" as="sourcePoint"/>
+            <mxPoint x="400" y="440" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="500" y="380"/>
+              <mxPoint x="400" y="380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#424242;" edge="1" parent="1" source="step2-box" target="step6-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="220" as="sourcePoint"/>
+            <mxPoint x="200" y="620" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="500" y="580"/>
+              <mxPoint x="200" y="580"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flow7" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#3F51B5;" edge="1" parent="1" source="step5-box" target="step7-box">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="560" as="sourcePoint"/>
+            <mxPoint x="600" y="620" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow Labels -->
+        <mxCell id="flow-label1" value="1. SBOM Upload" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#1976D2;" vertex="1" parent="1">
+          <mxGeometry x="270" y="150" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label2" value="2. Analysis Trigger" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="390" y="150" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label3" value="3. External APIs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="250" y="250" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label4" value="4. Data Storage" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="620" y="250" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label5" value="5. Results Generation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="320" y="390" width="100" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label6" value="6. Monitoring" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#424242;" vertex="1" parent="1">
+          <mxGeometry x="250" y="590" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow-label7" value="7. Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;fontColor=#3F51B5;" vertex="1" parent="1">
+          <mxGeometry x="450" y="590" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Performance Metrics -->
+        <mxCell id="metrics" value="⚡ Performance Metrics:&#xa;• Analysis Time: &lt; 30 seconds&#xa;• Concurrent Users: 1000+&#xa;• Storage: Unlimited (S3)&#xa;• Availability: 99.9%" style="text;html=1;strokeColor=#FF6F00;fillColor=#FFF8E1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="400" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Security Badge -->
+        <mxCell id="security" value="🔒 Security Features:&#xa;• End-to-end Encryption&#xa;• IAM Least Privilege&#xa;• API Rate Limiting&#xa;• Audit Logging" style="text;html=1;strokeColor=#C62828;fillColor=#FFEBEE;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="500" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Cost Badge -->
+        <mxCell id="cost" value="💰 Cost Optimization:&#xa;• Pay-per-Request&#xa;• Auto-scaling&#xa;• No Idle Costs&#xa;• Serverless Architecture" style="text;html=1;strokeColor=#2E7D32;fillColor=#E8F5E8;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="600" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

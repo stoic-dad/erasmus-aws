@@ -1,34 +1,16 @@
-```mermaid
-graph TB
-    %% Users and Clients
-    Users[👨‍💻 Users]
-    WebApp[🌐 Web Dashboard<br/>index_enhanced.html]
-    APIClients[📱 API Clients<br/>Programmatic Access]
-    
-    %% API Gateway
-    APIGW[🌐 API Gateway<br/>REST API Regional<br/>- POST /analyze<br/>- OPTIONS /*<br/>- GET /health]
-    
-    %% Lambda Function
-    Lambda[🚀 AWS Lambda<br/>erasmus-analyzer<br/>Python 3.9, 1024MB]
-    
-    %% Lambda Internal Components
-    subgraph LambdaComponents["📋 Lambda Analysis Engine"]
-        CVE[🔍 CVE Analysis<br/>NVD API v2<br/>Critical/High CVEs]
-        DepTrack[🏗️ Dependency Tracking<br/>Supply Chain Analysis<br/>BFS Algorithm]
-        OFAC[🌍 OFAC Scanner<br/>20+ Countries<br/>Sanctions Screening]
-        ExecSum[📊 Executive Summaries<br/>BLUF Reports<br/>Action Items]
-        RiskEngine[⚡ Risk Engine<br/>CVSS Scoring<br/>Prioritization]
-        MultiFormat[🔗 Multi-Format Support<br/>CycloneDX<br/>Multi-ecosystem]
-    end
-    
-    %% Storage Systems
-    S3[📦 S3 Bucket<br/>AES-256 Encrypted<br/>- sboms/ (input)<br/>- analysis/ (output)]
-    DynamoDB[(🗄️ DynamoDB<br/>ErasmusSBOMAnalysisCache<br/>Pay-per-Request<br/>GSI: timestamp-index)]
-    
-    %% External APIs
-    subgraph ExternalAPIs["🌐 External APIs"]
-        NVDAPI[🔍 NVD API v2<br/>CVE Database<br/>CVSS Scores]
-        SafetyDB[🛡️ Safety DB<br/>Python Packages<br/>Vulnerability Intel]
+# 🏗️ Erasmus SBOM Risk Analyzer - Architecture Visualization
+
+## 📊 Professional AWS Architecture Diagram
+
+![Erasmus AWS Architecture](architecture/exports/erasmus-aws-architecture-professional.png)
+
+## 🔄 Data Flow Pipeline Diagram
+
+![Erasmus Data Flow](architecture/exports/erasmus-dataflow-professional.png)
+
+> **Note:** These professional diagrams are created using official AWS architecture icons for better clarity and visualization. The source files are available in the `architecture/` directory.
+
+## 🧩 Component Overview
     end
     
     %% Monitoring

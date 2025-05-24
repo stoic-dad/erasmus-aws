@@ -15,7 +15,7 @@ This project automates the analysis of Software Bill of Materials (SBOMs) for ge
 
 ## 📐 Architecture
 
-![Architecture Diagram](architecture/erasmus-architecture.png)
+![Architecture Diagram](architecture/exports/erasmus-aws-architecture-professional.png)
 
 ### Enhanced Components:
 - **S3 Bucket**: SBOM ingestion (`sboms/`) and analysis output (`analysis/`)
@@ -24,6 +24,9 @@ This project automates the analysis of Software Bill of Materials (SBOMs) for ge
 - **API Gateway**: RESTful endpoints for web interface integration
 - **CloudWatch**: Monitoring, logging, and alerting
 - **SNS**: Alert notifications for system health
+
+#### Data Flow Pipeline
+![Data Flow Diagram](architecture/exports/erasmus-dataflow-professional.png)
 
 ---
 

@@ -1,6 +1,14 @@
 # 🎯 Erasmus SBOM Risk Analyzer - Executive Architecture Overview
 
-## 📊 Business-Level Architecture
+## 📊 Professional Architecture Diagram
+
+![Erasmus AWS Architecture](architecture/exports/erasmus-aws-architecture-professional.png)
+
+## 🔄 Data Flow Pipeline 
+
+![Erasmus Data Flow](architecture/exports/erasmus-dataflow-professional.png)
+
+## 📐 Business-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐

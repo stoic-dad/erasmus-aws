@@ -158,7 +158,9 @@ aws logs describe-log-groups --log-group-name-prefix="/aws/lambda/erasmus"
 - **Project Summary**: `PROJECT_COMPLETION_SUMMARY.md` - Implementation details
 
 ### Architecture
-- **Design**: `architecture/erasmus-architecture.png`
+- **AWS Architecture**: `architecture/exports/erasmus-aws-architecture-professional.png`
+- **Data Flow Diagram**: `architecture/exports/erasmus-dataflow-professional.png`
+- **Source Diagrams**: `architecture/` - Draw.io source files
 - **Sample Output**: `analysis/sample_output.json`
 
 ## 🎉 You're Ready!
